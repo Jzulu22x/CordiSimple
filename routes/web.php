@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
+Route::resource('reserves', ReserveController::class);
 Route::get('/', function () {
     return view('welcome');
 });
