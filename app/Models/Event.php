@@ -24,6 +24,7 @@ class Event extends Model
         'description',
         'location',
         'people_capacity',
+        'occupied_slots',
         'status_id',
         // Otros campos...
     ];

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date_time');
             $table->string('location');
             $table->integer('people_capacity');
+            $table->integer('occupied_slots');
             $table->unsignedBigInteger('status_id')->nullable();
             $table->timestamps();
 
