@@ -56,6 +56,11 @@ class Reserve extends Model
         return $this->belongsTo(Status::class);
     }
 
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
