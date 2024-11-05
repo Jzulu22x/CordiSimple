@@ -37,7 +37,7 @@
                 <div class="mb-4">
                     <!-- Input for the event start date -->
                     <label for="date_time" class="block text-gray-700 font-bold mb-2">Fecha de Inicio:</label>
-                    <input type="datetime-local" name="date_time" id="date_time"
+                    <input type="date" name="date_time" id="date_time"
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
                         value="{{ old('date_time') }}" required>
                     <!-- Error message for the start date -->
@@ -60,12 +60,12 @@
 
                 <div class="mb-4">
                     <!-- Input for the maximum number of slots -->
-                    <label for="max_slots" class="block text-gray-700 font-bold mb-2">Número Máximo de Slots:</label>
-                    <input type="number" name="max_slots" id="max_slots" min="1"
+                    <label for="people_capacity" class="block text-gray-700 font-bold mb-2">Número Máximo de Slots:</label>
+                    <input type="number" name="people_capacity" id="people_capacity" min="1"
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-                        value="{{ old('max_slots') }}" required>
+                        value="{{ old('people_capacity') }}" required>
                     <!-- Error message for the maximum slots -->
-                    @error('max_slots')
+                    @error('people_capacity')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>

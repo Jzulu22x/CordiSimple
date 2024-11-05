@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
-
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -22,8 +22,8 @@ class EventController extends Controller
 
     public function create()
     {
-        //Show the Create form
-        return view('events.create');
+        $event = new Event();
+        return view('events.create', compact('event'));
     }
 
     public function store(EventRequest $request)
@@ -47,11 +47,21 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        $event = Event::findOrFail($id);
-        return view('events.edit', compact('event'));
-    }
+   
+     public function edit(string $id)
+     {
+         $event = Event::findOrFail($id);
+ 
+ 
+         if (is_string($event->date_start)) {
+             $event->date_start = Carbon::parse($event->date_start);
+         }
+         if (is_string($event->date_end)) {
+             $event->date_end = Carbon::parse($event->date_end);
+         }
+ 
+         return view('events.edit', compact('event'));
+     }
 
     /**
      * Update the specified resource in storage.
