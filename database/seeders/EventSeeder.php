@@ -57,6 +57,7 @@ class EventSeeder extends Seeder
                     'date_time' => $eventData['date_time'],
                     'location' => $eventData['location'],
                     'people_capacity' => $eventData['people_capacity'],
+                    'occupied_slots' => $eventData['occupied_slots'],
                     'status_id' => $eventData['status_id'],
                     'created_at' => $eventData['created_at'],
                     'updated_at' => $eventData['updated_at'],
