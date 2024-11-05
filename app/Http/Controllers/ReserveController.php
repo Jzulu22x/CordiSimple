@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Reserve;
-use App\Models\Status;
 use Illuminate\Http\Request;
 
 class ReserveController extends Controller
@@ -23,10 +23,8 @@ class ReserveController extends Controller
      */
     public function create()
     {
-        //Mientras la migracion de evento no este, no podre hacer una reserva real
-        // $statuses = Status::all(); 
-        // return view('reserves.create', compact('statuses'));
-        return view('reserves.create');
+        $events = Event::all(); 
+        return view('reserves.create', compact('events'));
     }
 
     /**
@@ -34,12 +32,16 @@ class ReserveController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $validatedData = $request->validate([
+            'event_id' => 'required|integer',
             'user_id' => 'required|exists:users,id',
             'status_id' => 'required|integer',
         ]);
 
         $reserve = new Reserve();
+        $reserve->event_id = $validatedData['event_id'];
         $reserve->user_id = $validatedData['user_id'];
         $reserve->status_id = $validatedData['status_id'];
         $reserve->save();
