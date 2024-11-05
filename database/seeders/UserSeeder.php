@@ -18,28 +18,28 @@ class UserSeeder extends Seeder
                 'last_name' => 'velez',
                 'email' => 'fer.velez@gmail.com',
                 'password' => '123',
-                'roles_id' => 1, 
+                'roles_id' => 1,
             ],
             [
                 'name' => 'juan',
                 'last_name' => 'perez',
                 'email' => 'juan.perez@gmail.com',
                 'password' => 'password123',
-                'roles_id' => 1, 
+                'roles_id' => 1,
             ],
             [
                 'name' => 'maria',
                 'last_name' => 'gomez',
                 'email' => 'maria.gomez@gmail.com',
                 'password' => 'password456',
-                'roles_id' => 1, 
+                'roles_id' => 1,
             ],
             [
                 'name' => 'carlos',
                 'last_name' => 'lopez',
                 'email' => 'carlos.lopez@gmail.com',
                 'password' => 'password789',
-                'roles_id' => 2, 
+                'roles_id' => 2,
             ]
         ];
 
@@ -55,7 +55,6 @@ class UserSeeder extends Seeder
                     'updated_at' => now(),
                 ]
             );
+        }
     }
-}
-
 }
