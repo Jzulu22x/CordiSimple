@@ -2,7 +2,7 @@
 
 @section('contenido')
     <p class="text-2xl font-semibold text-center"> Hola {{ Auth::user()->name }} </p>
-    <h2 class="text-2xl font-semibold text-center">Actualizar mis datos</h2>
+    <h2 class="text-2xl font-semibold text-center">Actualiza tus datos</h2>
     <form method="POST" action="" class="space-y-4 needs-validation">
         @csrf 
             <!-- Name -->
@@ -57,7 +57,7 @@
 
             <div class="flex items-center justify-between mt-4">
                 <button type="submit" class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none">
-                    editar usuario
+                    Editar
                 </button>
             </div>
         </form>

@@ -12,9 +12,11 @@
 <body class="bg-gray-100">
     <main>
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-12 gap-6 gap-4 my-4">
+            <div class="grid grid-cols-12 gap-4 my-4">
+                <div class="col-span-3"> 
             <!-- Tarjeta de Usuario -->
                 @include('components.componet-user')
+                </div>
 
             <!-- Menú de Navegación -->
             <div class="col-span-9">

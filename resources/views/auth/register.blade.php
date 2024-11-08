@@ -8,6 +8,12 @@
 </head>
 <body class="bg-gray-100">
     <main class="flex items-center justify-center min-h-screen">
+        <!-- mensajito si sale bien -->
+            @if (session ('succes'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4 shadow">
+                {{ session('succes') }}
+            </div>
+            @endif
         <div class="w-full max-w-md p-8 mt-6 mb-6 space-y-3 bg-white rounded-lg shadow-md">
             <h1 class="text-2xl font-semibold text-center">Regístrate</h1>
             <form method="POST" action="{{ route('register') }}" class="space-y-4">

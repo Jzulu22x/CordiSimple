@@ -16,7 +16,7 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [ReserveController::class, 'index'])
+Route::get('/dashboard', [ReserveController::class, 'other'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 

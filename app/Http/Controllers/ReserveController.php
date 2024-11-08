@@ -18,6 +18,13 @@ class ReserveController extends Controller
         return view('reserves.index', compact('reserves'));
     }
 
+    public function other()
+    {
+        $reserves = Reserve::all();
+        return view('dashboard', compact('reserves'));
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
