@@ -18,12 +18,12 @@ return new class extends Migration
             $table->unsignedBigInteger('status_id')->nullable();
             $table->timestamps();
 
-            //event_id relationship
-            // $table->foreign('event_id')
-            //     ->references('id')
-            //     ->on('events')
-            //     ->onDelete('set null')
-            //     ->onUpdate('cascade');
+            // event_id relationship
+            $table->foreign('event_id')
+                ->references('id')
+                ->on('events')
+                ->onDelete('set null')
+                ->onUpdate('cascade');
 
             //user_id relationship
             $table->foreign('user_id')

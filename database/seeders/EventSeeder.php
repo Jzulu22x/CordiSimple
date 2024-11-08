@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Event;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
@@ -21,6 +20,7 @@ class EventSeeder extends Seeder
                 'date_time' => Carbon::create(2024, 12, 5),
                 'location' => 'Centro de Convenciones',
                 'people_capacity' => 200,
+                'occupied_slots' => 25,
                 'status_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -31,6 +31,7 @@ class EventSeeder extends Seeder
                 'date_time' => Carbon::create(2024, 11, 10),
                 'location' => 'Pabellón de Exposiciones',
                 'people_capacity' => 150,
+                'occupied_slots' => 100,
                 'status_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -41,6 +42,7 @@ class EventSeeder extends Seeder
                 'date_time' => Carbon::create(2024, 12, 20),
                 'location' => 'Parque Central',
                 'people_capacity' => 500,
+                'occupied_slots' => 120,
                 'status_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
