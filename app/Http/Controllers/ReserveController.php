@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Reserve;
 
 
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class ReserveController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+         $reservas = Reserve::all();
+         return view('dashboard', compact('reservas'));
     }
 
     /**

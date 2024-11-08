@@ -1,42 +1,26 @@
-<div class="container mx-auto px-4">
-    <div class="grid grid-cols-12 gap-6 gap-4 my-4">
-        <!-- Tarjeta de Usuario -->
-        <div class="col-span-3 bg-white p-6 shadow-md rounded">
-            <section class="widget locations">
-                <div class="avatar mb-4 text-center">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1057/1057231.png" alt="Avatar" class="w-24 h-24 rounded-full mx-auto" />
-                </div>
-                <div class="details text-center">
-                    <h2 class="text-xl font-semibold">{{ Auth::user()->name }}</h2>
-                    <p class="text-gray-600">{{ Auth::user()->email }}</p>
-                </div>
-            </section>
-        </div>
-
-        <!-- Menú de Navegación -->
-        <div class="col-span-9">
-            <nav class="nav bg-white p-1 shadow-md rounded">
-                <ul class="space-y-2">
-                    <li>
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
-                    </li>
-                    <li>
-                    <li>
-                        <!-- Autenticación -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</div>
+<nav class="nav bg-white p-1 shadow-md rounded">
+    <ul class="space-y-2">
+        <li>
+            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Dashboard') }}
+            </x-nav-link>
+        </li>
+        <li>
+            <x-nav-link :href="route('perfil.edit', ['id' => Auth::user()->id])" :active="request()->routeIs('perfil.edit')">
+                {{ __('Perfil') }}
+            </x-nav-link>
+        </li>
+        <li>
+            <!-- Autenticación -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </x-dropdown-link>
+            </form>
+        </li>
+    </ul>
+</nav>
 
 
 <!-- <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700"> -->
