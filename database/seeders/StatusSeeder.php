@@ -19,13 +19,6 @@ class StatusSeeder extends Seeder
 
         foreach ($statuses as $state) {
             Status::create($state);
-        } $statuses = [
-            ['name' => 'active', 'description' => 'currently active'],
-            ['name' => 'cancelled', 'description' => 'currently cancelled'],
-        ];
-
-        foreach ($statuses as $state) {
-            Status::create($state);
         }
     }
 }
