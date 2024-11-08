@@ -14,6 +14,7 @@
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id Reserva</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre Evento</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id Usuario</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre Usuario</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
@@ -24,6 +25,7 @@
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $reserve->id }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $reserve->status->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $reserve->event->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $reserve->user->id }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $reserve->user->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
