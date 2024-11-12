@@ -21,6 +21,7 @@ class Event extends Model
         'name',
         'description',
         'location',
+        'date_time',
         'people_capacity',
         'occupied_slots',
         'status_id',
@@ -36,7 +37,10 @@ class Event extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function getAvailableSlotsAttribute()
+    {
+        return $this->people_capacity - $this->occupied_slots;
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
