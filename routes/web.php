@@ -4,9 +4,19 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+Route::middleware('auth')->group(function () {
+    Route::get('reserves', [ReserveController::class, 'index'])->name('reserves.index');
+    Route::get('reserves/user', [ReserveController::class, 'index'])->name('reserves.user.index');
+    Route::get('reserves', [ReserveController::class, 'index'])->name('reserves.admin.index');
+    Route::get('reserves/create/user', [ReserveController::class, 'create'])->name('reserves.user.create');
+    Route::get('reserves/create/admin', [ReserveController::class, 'create'])->name('reserves.admin.create');
+    Route::get('reserves/admin/edit/{id}', [ReserveController::class, 'edit'])->name('reserves.admin.edit');
+    Route::get('reserves/admin/{id}', [ReserveController::class, 'show'])->name('reserves.user.show');
+    Route::put('reserves/{id}', [ReserveController::class, 'update'])->name('reserves.update');
+    Route::post('reserves', [ReserveController::class, 'store'])->name('reserves.store');
+    Route::delete('reserves/{id}', [ReserveController::class, 'destroy'])->name('reserves.destroy');
+});
 
-
-Route::resource('reserves', ReserveController::class);
 Route::get('/', function () {
     return view('welcome');
 });
