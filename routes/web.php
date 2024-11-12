@@ -6,8 +6,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::get('reserves', [ReserveController::class, 'index'])->name('reserves.index');
-    Route::get('reserves/user', [ReserveController::class, 'index'])->name('reserves.user.index');
-    Route::get('reserves', [ReserveController::class, 'index'])->name('reserves.admin.index');
+    // Route::get('reserves/user', [ReserveController::class, 'index'])->name('reserves.user.index');
+    // Route::get('reserves', [ReserveController::class, 'index'])->name('reserves.admin.index');
     Route::get('reserves/create/user', [ReserveController::class, 'create'])->name('reserves.user.create');
     Route::get('reserves/create/admin', [ReserveController::class, 'create'])->name('reserves.admin.create');
     Route::get('reserves/admin/edit/{id}', [ReserveController::class, 'edit'])->name('reserves.admin.edit');

@@ -5,7 +5,7 @@
     <h1 class="text-3xl font-bold text-center text-white mb-6">Lista de Reservas</h1>
 
     <div class="flex justify-end mb-4">
-        <a href="{{ route('reserves.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Nueva Reserva</a>
+        <a href="{{ route('reserves.user.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Nueva Reserva</a>
     </div>
 
     <div class="bg-white shadow-md rounded-lg overflow-hidden">
@@ -29,7 +29,7 @@
                         <td class="px-6 py-4 whitespace-nowrap">{{ $reserve->user->id }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $reserve->user->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="{{ route('reserves.show', $reserve->id) }}" class="text-indigo-600 mr-4 hover:text-indigo-900">Detalles</a>
+                            <a href="{{ route('reserves.user.show', $reserve->id) }}" class="text-indigo-600 mr-4 hover:text-indigo-900">Detalles</a>
                             {{-- <a href="{{ route('reserves.edit', $reserve->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>. --}}
                             <form action="{{ route('reserves.destroy', $reserve->id) }}" method="POST" class="inline-block ml-4">
                                 @csrf
