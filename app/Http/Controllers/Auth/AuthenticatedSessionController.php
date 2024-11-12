@@ -30,10 +30,21 @@ class AuthenticatedSessionController extends Controller
 
         $user = $request->user();
 
-        return redirect()->intended(route('dashboard', absolute: false))->with([
-            'userName' => $user->name,
-            'userRole' => $user->role_id
-        ]);
+        if ($user->role_id == 2) {
+
+            return redirect()->intended(route('admin', absolute: false))->with([
+                'userName' => $user->name,
+                'userRole' => $user->role_id
+            ]);
+            
+            
+        }else{
+            return redirect()->intended(route('dashboard', absolute: false))->with([
+                'userName' => $user->name,
+                'userRole' => $user->role_id
+            ]);
+        }
+
     }
 
     /**
