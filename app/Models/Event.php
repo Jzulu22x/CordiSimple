@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Event extends Model
@@ -23,6 +21,7 @@ class Event extends Model
         'name',
         'description',
         'location',
+        'date_time',
         'people_capacity',
         'occupied_slots',
         'status_id',
@@ -38,7 +37,10 @@ class Event extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function getAvailableSlotsAttribute()
+    {
+        return $this->people_capacity - $this->occupied_slots;
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

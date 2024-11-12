@@ -29,10 +29,9 @@ class EventRequest extends FormRequest
         return [
             'name' => 'required|string|max:50|unique:events,name,' . $this->events,
             'description' => 'nullable|string|max:500',
-            'date_start' => 'required|date|after_or_equal:today',
-            'date_end' => 'required|date|after_or_equal:date_start',
+            'date_time' => 'required|date|after_or_equal:today',
             'location' => 'required|string|max:250',
-            'max_slots' => 'required|integer|max:500',
+            'people_capacity' => 'required|integer|max:500',
             'status' => 'required|boolean',
         ];
     }
@@ -49,15 +48,12 @@ class EventRequest extends FormRequest
             'name.unique' => 'El nombre ya está en uso.',
             'name.max' => 'El nombre sobrepasa los caracteres permitidos (50).',
             'description.max' => 'La descripción sobrepasa los caracteres permitidos (500).',
-            'date_start.required' => 'La fecha de inicio es obligatoria.',
-            'date_start.date' => 'La fecha de inicio debe ser una fecha válida.',
-            'date_start.after_or_equal' => 'La fecha de inicio no puede ser una fecha pasada.',
-            'date_end.required' => 'La fecha de finalización es obligatoria.',
-            'date_end.date' => 'La fecha de finalización debe ser una fecha válida.',
-            'date_end.after_or_equal' => 'La fecha de finalización debe ser posterior o igual a la fecha de inicio.',
+            'date_time.required' => 'La fecha de inicio es obligatoria.',
+            'date_time.date' => 'La fecha de inicio debe ser una fecha válida.',
+            'date_time.after_or_equal' => 'La fecha de inicio no puede ser una fecha pasada.',
             'location.required' => 'La ubicación es obligatoria.',
-            'max_slots.required' => 'El número máximo de slots es obligatorio.',
-            'max_slots.integer' => 'El número máximo de slots debe ser un número entero.',
+            'people_capacity.required' => 'El número máximo de slots es obligatorio.',
+            'people_capacity.integer' => 'El número máximo de slots debe ser un número entero.',
             'status.required' => 'El estado es obligatorio.',
             'status.boolean' => 'El estado debe ser verdadero o falso.',
         ];

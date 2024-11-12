@@ -1,4 +1,3 @@
-
 <!-- sidebar -->
  <!-- Tarjeta de Usuario -->
 <section class="widget locations mb-8">
@@ -17,9 +16,10 @@
         {{ __('Mis reservas') }}
     </x-dropdown-link>
     
-    <x-dropdown-link :href="route('perfil.edit', ['id' => Auth::user()->id])" :active="request()->routeIs('perfil.edit')" class="block px-4 py-2 text-lg hover:bg-sky-700 active:bg-sky-700 rounded">
+    <x-dropdown-link :href="route('events.index')" :active="request()->routeIs('events.create')" class="block px-4 py-2 text-lg hover:bg-sky-700 active:bg-sky-700 rounded">
         {{ __('Eventos') }}
     </x-dropdown-link>
+
     
     <x-dropdown-link :href="route('perfil.edit', ['id' => Auth::user()->id])" :active="request()->routeIs('perfil.edit')" class="block px-4 py-2 text-lg hover:bg-sky-700 active:bg-sky-700 rounded">
         {{ __('Perfil') }}
