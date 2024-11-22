@@ -11,17 +11,18 @@
         <link href="css/dashboard.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     </head>
-<body class="bg-gray-100">
-    <main class="flex">
+<body class="bg-gray-100 min-h-screen">
+    <main class="flex min-h-screen">
         <!-- sidebar -->
-        <div class="w-1/5 bg-gray-400 text-white h-screen p-7 shadow-md rounded">
+        <div class="w-1/5 bg-gray-400 text-white p-7 shadow-md rounded">
             @include('layouts.navigation')
         </div>
 
         <!-- Contenido principal -->
         <div class="w-3/4 p-4">
             <div class="bg-white p-4 shadow-md rounded text-xl font-bold mb-4 flex gap-6 justify-between">
-                <div>
+                <div class="flex items-center gap-4">
+                    <img src="logoChoosEvent.png" class="w-12 h-12">
                     <h2>ChoosEvent</h2>
                 </div>
                 <div>

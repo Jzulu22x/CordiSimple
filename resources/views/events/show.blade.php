@@ -1,10 +1,10 @@
-@extends('layouts.personal')
+@extends('layouts.main')
 
-@section('content')
-    <div class="container mx-auto py-8">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Detalles del evento: {{ $event->id }}</h1>
-
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+@section('contenido')
+<div class="container mx-auto py-2">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">Detalles del evento: {{ $event->id }}</h1>
+    <div class="flex items-center gap-4 justify-center">
+        <div class="bg-white shadow-md rounded-lg w-5/6">
             <div class="px-8 py-6">
 
                 <div class="mb-4">
@@ -54,8 +54,8 @@
 
 
                 <div class="flex justify-end mt-6">
-                    <a href="{{ route('events.index') }}"
-                        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2">Volver a la lista</a>
+                    <!-- <a href="{{ route('events.index') }}"
+                        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2">Volver a la lista</a> -->
                     <a href="{{ route('events.edit', $event->id) }}"
                         class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Editar evento</a>
 
@@ -70,6 +70,7 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 <script>

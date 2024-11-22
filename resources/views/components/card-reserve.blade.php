@@ -18,7 +18,7 @@ $displayedEvents = [];
 
                 <div class=" text-base text-[#919293]">Lugar del evento: {{ $reserve->event->location }}</div>
 
-                <div class="flex gap-6 justify-center pt-6">
+                <div class="flex gap-6 justify-center pt-6 items-center">
                     <div>
                         <a class="bg-green-500 text-white w-full font-bold text-base  p-3 rounded-lg  hover:bg-green-400 active:scale-95 transition-transform transform" href="{{ route('events.show', ['id' => $reserve->event->id]) }}">Ver más</a>
                     </div>

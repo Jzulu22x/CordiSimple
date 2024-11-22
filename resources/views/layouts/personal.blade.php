@@ -14,9 +14,9 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
 
-{{-- Load CSS and JS assets --}}
+</head>
+{-- Load CSS and JS assets --}
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <body>

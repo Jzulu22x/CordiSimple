@@ -9,6 +9,9 @@
 <body class="bg-gray-100">
     <main class="flex items-center justify-center min-h-screen">
         <div class="w-full max-w-md p-8 mt-6 mb-6 space-y-3 bg-white rounded-lg shadow-md">
+            <div class="flex justify-center items-center">
+                <img src="logoChoosEvent.png" class="w-24">
+            </div>
             <h1 class="text-2xl font-semibold text-center">Inicia sección</h1>
             <form method="POST" action="{{ route('login') }}" class="space-y-4">
                 @csrf
