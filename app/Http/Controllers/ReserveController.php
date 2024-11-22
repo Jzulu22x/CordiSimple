@@ -21,30 +21,38 @@ class ReserveController extends Controller
 
             if ($user->roles_id == '2') {
                 $reserves = Reserve::all();
-                return view('reserves.admin.index', compact('reserves'));
+                return view('dashboard', compact('reserves'));
             } else {
                 $reserves = Reserve::where('user_id', $user->id)->get();
-                return view('reserves.user.index', compact('reserves'));
+                return view('dashboard', compact('reserves'));
             }
         }
+    }
+
+    public function other()
+    {
+        $reserves = Reserve::all();
+        return view('dashboard', compact('reserves'));
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
         if (Auth::check()) {
             $user = Auth::user();
 
             if ($user->roles_id == '2') {
-                $events = Event::all();
+                $events = Event::all();  // Verifica que esto devuelve una colección válida
                 $users = User::all();
                 $statuses = Status::all();
                 return view('reserves.admin.create', compact('events', 'users', 'statuses'));
             } else {
-                $events = Event::all();
-                return view('reserves.user.create', compact('events')); 
+                $events = Event::all();  // Verifica que esto también esté correcto
+                $event = Event::findOrFail($id);
+                return view('reserves.user.create', compact('events', 'event'));
             }
         }
     }

@@ -1,0 +1,149 @@
+:root{
+    --primary: #dd5555;
+    --background:#ebebeb;
+}
+
+
+*, *:before, *:after {
+box-sizing: border-box;
+}
+img { max-width: 100%; height: auto; vertical-align: sub; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--background);  
+  padding-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #f2f2f2;
+  border-radius: 3px;
+  color: #7a7a7a;
+  font-size: (13/16) + em;
+  transition: background .3s ease, color .3s ease;
+  text-decoration: none;
+  &:hover {
+    background: darken(#f2f2f2, 5%);
+    color: darken(#b9bcbc, 15%);
+  }
+  &.btn-primary {
+    background:--primary;
+    color: rgba(255,255,255,.9);
+    &:hover, &.active {
+      background: darken(--primary, 5%);
+    }
+  }
+  &.btn-large {
+    padding: 12px 28px;
+  }
+  &.btn-caps {
+    text-transform: uppercase;
+  }
+  &.btn-block {
+    display: block;
+    width: 100%; 
+    text-align: center;
+  }
+}
+
+
+.box {
+  background: #f9f9f9;
+  box-shadow: 0 0 1px rgba(0,0,0,.2), 0 2px 4px rgba(0,0,0,.1);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.1);
+  h2 {
+    color:--primary;
+    font-size: (14/16) + em;
+  }
+  p {
+    font-size: (12/16) + em;
+    color: #7d7d7d;
+  }
+}
+
+.locations {
+  padding: 30px;  
+  text-align: center;
+  .avatar {
+    border-radius: 50%;
+    img {
+      border-radius: 50%;
+    }
+  }
+  .details {
+    margin-top: 30px;
+  }
+  .btn {
+    margin-top: 30px;
+  }
+}
+
+.nav {
+  a {
+    text-decoration: none;
+    color: #cccccc;
+    text-shadow: 1px 1px 1px rgba(255,255,255,.5);
+    font-size: (12/16) + em;
+    &:hover {
+      color: --primary;
+    }
+  }
+  [class*="icon-"] {
+    font-size: (24/12) + em;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    a {
+      display: block;
+      padding: 20px 18px;
+    }
+  }
+}
+
+.weather {
+  .header {
+    border-radius: 5px 5px 0 0;
+    padding: 20px 0;
+    background: --primary;
+    text-align: center;
+    color: #fff;
+    font-size: (50/16) + em;
+  }
+  [class*="icon-"] {
+    position: relative;
+    top: 2px;
+  }
+  article {
+    text-align: center;
+    padding: 5px 0;
+  }
+}
+
+
+.post {
+  img {
+    border-radius: 5px 5px 0 0;
+  }
+  .details {
+    padding: 10px 20px;
+    p {
+      line-height: 1.5em;
+    }
+  }
+}
+
+.find {
+  padding: 10px;
+}

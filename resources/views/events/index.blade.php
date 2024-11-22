@@ -1,6 +1,7 @@
-@extends('layouts.personal')
+@extends('layouts.main')
 
-@section('content')
+@section('contenido')
+<div class="container mx-auto py-8">
     <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Lista de Eventos</h1>
 
     <!-- Botón para crear un nuevo evento, visible solo a administradores -->
@@ -15,7 +16,7 @@
     <!-- Contenedor para mostrar los eventos disponibles -->
     <div class="flex flex-wrap justify-center gap-6">
         @forelse ($events as $event)
-            <div class="bg-white py-5 w-64 sm:w-1/2 lg:w-1/4 xl:w-1/5 cursor-pointer"> <!-- Añadir cursor-pointer para indicar que es clickeable -->
+            <div class=" cursor-pointer"> <!-- Añadir cursor-pointer para indicar que es clickeable -->
                 <div class="border border-gray-200 rounded-lg shadow-sm">
                     <!-- Envolvemos toda la card en un enlace -->
                     <a href="{{ route('events.show', $event->id) }}">

@@ -1,10 +1,10 @@
-@extends('layouts.personal')
+@extends('layouts.main')
 
-@section('content')
-    <div class="container mx-auto py-8">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Detalles del evento: {{ $event->id }}</h1>
-
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+@section('contenido')
+<div class="container mx-auto py-2">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">Detalles del evento: {{ $event->id }}</h1>
+    <div class="flex items-center gap-4 justify-center">
+        <div class="bg-white shadow-md rounded-lg w-5/6">
             <div class="px-8 py-6">
 
                 <div class="mb-4">
@@ -65,17 +65,11 @@
                             <button type="submit" class="bg-red-500 text-white px-4 py-2 h-10 rounded hover:bg-red-600 mr-2">Eliminar</button>
                         </form>
                     @elseif (Auth::user()->roles_id == 1) <!-- Si el usuario es regular -->
-                        @php
-                            // Verificar si el usuario ya tiene una reserva activa
-                            $hasActiveReserve = Auth::user()->reserve()->where('event_id', $event->id)->where('status_id', 1)->exists();
-                        @endphp
+                        @if ($event->status_id == 1 && $event->occupied_slots < $event->people_capacity)
+                            <a href="{{ route('reserves.store', ['id' => $event->id]) }}" class="bg-green-500 text-black px-4 py-2 h-10 rounded hover:bg-violet-600 mr-2">Reservar</a>
 
-                        @if ($hasActiveReserve)
-                            <a href="{{ route('reserves.index') }}" class="bg-green-500 px-4 py-2 h-10 text-white rounded hover:bg-green-600 mr-2">Ir a la reserva</a>
-                        @elseif ($event->status_id == 1 && $event->occupied_slots < $event->people_capacity)
-                            <a href="{{ route('reserves.user.create', ['event_id' => $event->id]) }}" class="bg-violet-500 text-white px-4 py-2 h-10 rounded hover:bg-violet-600 mr-2">Reservar</a>
                         @else
-                            <span class="bg-yellow-500 text-white px-4 py-2 h-10 rounded cursor-not-allowed">Agotado</span>
+                            <span class="bg-red-500 text-black px-4 py-2 h-10 rounded cursor-not-allowed">Agotado</span>
                         @endif
                     @endif
                 </div>
