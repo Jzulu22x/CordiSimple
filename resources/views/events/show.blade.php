@@ -12,7 +12,6 @@
                     <p class="text-gray-600 text-lg capitalize">{{ $event->name }}</p>
                 </div>
 
-
                 <div class="mb-4">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Descripción:</h3>
                     <p class="text-gray-600 text-lg">{{ ucfirst($event->description) }}</p>
@@ -22,21 +21,24 @@
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Ubicación:</h3>
                     <p class="text-gray-600 text-lg capitalize">{{ $event->location }}</p>
                 </div>
+
                 <div class="mb-4">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Fecha del evento:</h3>
                     <p class="text-gray-600 text-lg">{{ $event->date_time }}</p>
                 </div>
+
                 <div class="mb-4">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Capacidad máxima:</h3>
                     <p class="text-gray-600 text-lg">{{ $event->people_capacity }}</p>
                 </div>
+
                 <div class="mb-4">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Estado</h3>
                     <p>
                         @if ($event->status_id == 1)
-                            available
+                            Disponible
                         @else
-                            not available
+                            No disponible
                         @endif
                     </p>
                 </div>
@@ -46,26 +48,36 @@
                     <p class="text-gray-600 text-lg">{{ $event->created_at->format('d-m-Y H:i:s') }}</p>
                 </div>
 
-
                 <div class="mb-4">
                     <h3 class="text-xl font-bold text-gray-700 mb-2">Última actualización:</h3>
                     <p class="text-gray-600 text-lg">{{ $event->updated_at->diffForHumans() }}</p>
                 </div>
 
+                <!-- Botones según el rol del usuario -->
+                <div class="flex justify-end mt-6 gap-4">
+                    @if (Auth::user()->roles_id == 2) <!-- Si el usuario es administrador -->
+                        <a href="{{ route('events.index') }}" class="bg-gray-500 text-white px-4 py-2 h-10 rounded hover:bg-gray-600 mr-2">Volver a la lista</a>
+                        <a href="{{ route('events.edit', $event->id) }}" class="bg-blue-500 text-white px-4 py-2 h-10 rounded hover:bg-blue-600 mr-2">Editar evento</a>
 
-                <div class="flex justify-end mt-6">
-                    <a href="{{ route('events.index') }}"
-                        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2">Volver a la lista</a>
-                    <a href="{{ route('events.edit', $event->id) }}"
-                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Editar evento</a>
+                        <form action="{{ route('events.destroy', $event->id) }}" id="delete" class="inline-block ml-4" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-500 text-white px-4 py-2 h-10 rounded hover:bg-red-600 mr-2">Eliminar</button>
+                        </form>
+                    @elseif (Auth::user()->roles_id == 1) <!-- Si el usuario es regular -->
+                        @php
+                            // Verificar si el usuario ya tiene una reserva activa
+                            $hasActiveReserve = Auth::user()->reserve()->where('event_id', $event->id)->where('status_id', 1)->exists();
+                        @endphp
 
-                    <form action="{{ route('events.destroy', $event->id) }}" id="delete" class="inline-block ml-4"
-                        method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mr-2">Eliminar</button>
-                    </form>
+                        @if ($hasActiveReserve)
+                            <a href="{{ route('reserves.index') }}" class="bg-green-500 px-4 py-2 h-10 text-white rounded hover:bg-green-600 mr-2">Ir a la reserva</a>
+                        @elseif ($event->status_id == 1 && $event->occupied_slots < $event->people_capacity)
+                            <a href="{{ route('reserves.user.create', ['event_id' => $event->id]) }}" class="bg-violet-500 text-white px-4 py-2 h-10 rounded hover:bg-violet-600 mr-2">Reservar</a>
+                        @else
+                            <span class="bg-yellow-500 text-white px-4 py-2 h-10 rounded cursor-not-allowed">Agotado</span>
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>
