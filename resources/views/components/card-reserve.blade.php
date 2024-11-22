@@ -24,7 +24,15 @@ $displayedEvents = [];
                     </div>
 
                     <div>
-                        <button class="bg-red-500 text-white w-full font-bold text-base p-3 rounded-lg hover:bg-red-400 active:scale-95 transition-transform transform">Cancelar</button>
+                    <form action="{{ route('reserves.destroy', ['id' => $reserve->event->id]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas cancelar esta reserva?');">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="bg-red-500 text-white w-full font-bold text-base p-3 rounded-lg hover:bg-red-400 active:scale-95 transition-transform transform">
+                            Cancelar
+                        </button>
+                    </form>
+
                     </div>
                 </div>
             </div>

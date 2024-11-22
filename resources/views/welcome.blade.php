@@ -43,7 +43,7 @@
     <div class="flex items-center justify-center">
         <div class="container mx-auto text-center py-8 ">
             <div class="justify-center flex items-center gap-8">
-                <img src="logoChoosEvent.png" class="w-40 h-40">
+                <img src="logoChoosEvent.png" class="w-50 h-40">
             </div>
             <h1 class="font-bold mb-4 text-2xl">Bienvenido a ChoosEvent</h1>
             <p class="text-gray-600 text-lg">Administra tus eventos con facilidad y eficiencia.</p>

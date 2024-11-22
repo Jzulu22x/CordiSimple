@@ -12,11 +12,6 @@
 
 <!-- Menú de Navegación -->
 <nav class="space-y-4">
-
-    <x-dropdown-link :href="route('reserves.index')" :active="request()->routeIs('reserves.index')" class="block px-4 py-2 text-lg hover:bg-sky-700 active:bg-sky-700 rounded">
-        {{ __('Reservas') }}
-    </x-dropdown-link>
-
     <x-dropdown-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="block px-4 py-2 text-lg hover:bg-sky-700 active:bg-sky-700 rounded">
         {{ __('Mis reservas') }}
     </x-dropdown-link>

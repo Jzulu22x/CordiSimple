@@ -3,48 +3,60 @@
 @section('contenido')
 <div class="container mx-auto py-8">
     <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Lista de Eventos</h1>
-    <div class="flex justify-center mb-4">
-        <a href="{{ route('events.create') }}" class="bg-blue-500 p-3 text-white rounded hover:bg-blue-600">Nuevo
-            evento</a>
-    </div>
-    <div class="flex flex-wrap gap-6 justify-center">
-    @forelse ($events as $event)
-        <div class="bg-white rounded-lg shadow-md p-6 w-80 sm:w-64 md:w-72 lg:w-80 flex flex-col justify-between">
-            <div class="mb-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">
-                    <a href="{{ route('events.show', $event->id) }}" class="hover:text-gray-600">
-                        {{ $event->name }}
+
+    <!-- Botón para crear un nuevo evento, visible solo a administradores -->
+    @if (Auth::user()->roles_id == 2)
+        <div class="flex justify-center mb-4">
+            <a href="{{ route('events.create') }}" class="bg-blue-500 p-3 text-white rounded hover:bg-blue-600">
+                Nuevo evento
+            </a>
+        </div>
+    @endif
+
+    <!-- Contenedor para mostrar los eventos disponibles -->
+    <div class="flex flex-wrap justify-center gap-6">
+        @forelse ($events as $event)
+            <div class=" cursor-pointer"> <!-- Añadir cursor-pointer para indicar que es clickeable -->
+                <div class="border border-gray-200 rounded-lg shadow-sm">
+                    <!-- Envolvemos toda la card en un enlace -->
+                    <a href="{{ route('events.show', $event->id) }}">
+                        <article class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900">
+                                {{ $event->name }}
+                            </h3>
+                            <p class="mt-2 text-sm text-gray-600 line-clamp-3">{{ ucfirst($event->description) }}</p>
+
+                            <div class="mt-4 text-sm text-gray-500">
+                                <p>Ubicación: {{ $event->location }}</p>
+                                <p>Capacidad: {{ $event->people_capacity }}</p>
+                                <p>Fecha: {{ $event->date_time }}</p>
+                                <p>
+                                    @if ($event->status_id == 1)
+                                        Disponible
+                                    @else
+                                        No disponible
+                                    @endif
+                                </p>
+                            </div>
+                        </article>
                     </a>
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3">{{ ucfirst($event->description) }}</p>
-                <div class="text-sm text-gray-700 space-y-1">
-                    <p><strong>Ubicación:</strong> {{ $event->location }}</p>
-                    <p><strong>Capacidad:</strong> {{ $event->people_capacity }}</p>
-                    <p><strong>Fecha:</strong> {{ $event->date_time }}</p>
-                    <p>
-                        <strong>Estado:</strong>
-                        @if ($event->status_id == 1)
-                            <span class="text-green-600">Disponible</span>
-                        @else
-                            <span class="text-red-600">No disponible</span>
+
+                    <div class="flex justify-end items-center mt-4">
+                        @if (Auth::user()->roles_id == 2)
+                            <!-- Botón de eliminar para administradores -->
+                            <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="inline-block ml-4 event-delete-form" data-event-id="{{ $event->id }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-50 h-8 w-24 text-red-600 hover:text-red-800">Eliminar</button>
+                            </form>
                         @endif
-                    </p>
+                    </div>
                 </div>
             </div>
-            <div class="mt-4 flex justify-end">
-                <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="event-delete-form">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="bg-red-100 text-red-600 hover:text-red-800 py-1 px-4 rounded">
-                        Eliminar
-                    </button>
-                </form>
-            </div>
-        </div>
-    @empty
-        <p class="text-gray-500">No hay eventos disponibles.</p>
-    @endforelse
-
+        @empty
+            <div class="w-full text-center text-gray-500 py-4">No hay eventos disponibles.</div>
+        @endforelse
+    </div>
 @endsection
 
 <script>
@@ -58,8 +70,7 @@
 
                 const eventId = this.getAttribute('data-event-id');
                 Swal.fire({
-                    title: "¿Estás seguro que quieres eliminar el evento " + eventId +
-                        "?",
+                    title: "¿Estás seguro que quieres eliminar el evento " + eventId + "?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",

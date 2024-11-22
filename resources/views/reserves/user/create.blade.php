@@ -1,6 +1,7 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app') -->
+@extends('dashboard')
 
-@section('content')
+@section('contentido')
     <div class="flex justify-center items-center min-h-screen">
         <div class="max-w-[720px] mx-auto">
             <div class="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">

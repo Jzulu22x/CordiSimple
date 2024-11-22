@@ -23,15 +23,18 @@ Route::get('/admin', [UserController::class, 'adminIndex'])
 
 Route::middleware('auth')->group(function () {
     Route::get('reserves', [ReserveController::class, 'index'])->name('reserves.index');
-    // Route::get('reserves/user', [ReserveController::class, 'index'])->name('reserves.user.index');
-    // Route::get('reserves', [ReserveController::class, 'index'])->name('reserves.admin.index');
-    Route::get('reserves/create/user', [ReserveController::class, 'create'])->name('reserves.user.create');
+    Route::get('reserves/user', [ReserveController::class, 'index'])->name('reserves.user.index');
+    Route::get('reserves/admin', [ReserveController::class, 'index'])->name('reserves.admin.index');
+    Route::get('reserves/create/user/{id}', [ReserveController::class, 'create'])->name('reserves.user.create');
+
+    // Route::get('reserves/create/user/{id}', [ReserveController::class, 'create'])->name('reserves.user.create');
     Route::get('reserves/create/admin', [ReserveController::class, 'create'])->name('reserves.admin.create');
     Route::get('reserves/admin/edit/{id}', [ReserveController::class, 'edit'])->name('reserves.admin.edit');
     Route::get('reserves/admin/{id}', [ReserveController::class, 'show'])->name('reserves.user.show');
     Route::put('reserves/{id}', [ReserveController::class, 'update'])->name('reserves.update');
     Route::post('reserves', [ReserveController::class, 'store'])->name('reserves.store');
     Route::delete('reserves/{id}', [ReserveController::class, 'destroy'])->name('reserves.destroy');
+
     Route::get('events', [EventController::class, 'index'])->name('events.index');
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
     Route::post('events', [EventController::class, 'store'])->name('events.store');
@@ -41,13 +44,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
 });
 
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/', function () {
+    return view('welcome');
 });
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 //usuario
 Route::middleware('auth')->group(function () {
